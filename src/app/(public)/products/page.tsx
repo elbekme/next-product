@@ -52,7 +52,7 @@ const Products = () => {
       router.push(`products?category=${value}`);
     }
   };
-
+  // 
   const handleInp = (e:React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
     getProducts();
