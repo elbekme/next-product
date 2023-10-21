@@ -53,7 +53,7 @@ const Products = () => {
     }
   };
 
-  const handleInp = (e:string) => {
+  const handleInp = (e:React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
     getProducts();
   }
