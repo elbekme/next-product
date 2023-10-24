@@ -1,13 +1,18 @@
-import { Metadata } from "next";
-import Account from "@/components/shares/Account";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Najot e-commerce | Account",
-  description:
-    "E-commerce website forever flksdjflad flkfjadslkf adslfjadsl fjlafkjsd",
-};
+import { useEffect } from "react";
+import Account from "@/components/shares/Account";
+import { useAppSelector } from "@/redux/hooks";
+import { redirect } from "next/navigation";
+import ROLES from "@/types/roles";
 
 const AccountPage = () => {
+  const { isAuthenticated, role } = useAppSelector((state) => state.auth);
+  useEffect(() => {
+    if (!isAuthenticated || ROLES.USER !== role) {
+      redirect("/login");
+    }
+  }, [isAuthenticated, role]);
   return (
     <div>
       <Account />
